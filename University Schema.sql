@@ -48,6 +48,8 @@ CREATE TABLE Offers (
        year int,
        FOREIGN KEY (d_name, c_number) REFERENCES Course(d_name, c_number),
        FOREIGN KEY (semester, year) REFERENCES Term(semester, year),
+       -- a course cannot be offered more than once per semester
+       UNIQUE(d_name, c_number, semester, year),
        PRIMARY KEY (o_id)
 );
 
